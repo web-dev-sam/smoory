@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/nutr",
-      "destination": "https://nutr.webry.com",
+      "source": "/smoory",
+      "destination": "https://smoory.webry.com",
       "permanent": false
     }
   ],
