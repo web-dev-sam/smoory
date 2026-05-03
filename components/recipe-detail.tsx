@@ -95,7 +95,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
         </div>
 
         {/* Ingredients Card */}
-        <div className="bg-card border border-border/50 rounded-3xl p-6 md:p-8 shadow-sm">
+        <div className="bg-card rounded-3xl p-6 md:p-8">
           <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-6">
             {t.recipe.ingredients}
           </h2>
