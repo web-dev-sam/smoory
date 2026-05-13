@@ -35,7 +35,7 @@ export const recipes: Recipe[] = [
       en: 'A tropical gut shot with mango for natural sweetness and fibre, ginger for its anti-inflammatory kick, lime for vitamin C, and ground flaxseed to support digestion.',
       de: 'Ein tropischer Gut-Shot mit Mango für natürliche Süße und Ballaststoffe, Ingwer für seine entzündungshemmende Wirkung, Limette für Vitamin C und gemahlenen Leinsamen zur Unterstützung der Verdauung.',
     },
-    image: '/images/mango-gut-shot.png',
+    image: '/images/mango-gut-shot.webp',
     info: {
       prepTime: { en: '5 mins', de: '5 Min.' },
       cookTime: { en: '0 mins', de: '0 Min.' },
@@ -61,7 +61,7 @@ export const recipes: Recipe[] = [
       en: 'A warming and anti-inflammatory shot combining turmeric for powerful antioxidants, ginger for digestion, and carrot for beta-carotene, finished with lemon for brightness — and a pinch of black pepper to unlock curcumin absorption.',
       de: 'Ein wärmender und entzündungshemmender Shot aus Kurkuma für starke Antioxidantien, Ingwer für die Verdauung und Karotte für Beta-Carotin, abgerundet mit Zitrone und einer Prise schwarzem Pfeffer, der die Aufnahme von Curcumin entscheidend verbessert.',
     },
-    image: '/images/turmeric-gut-shot.png',
+    image: '/images/turmeric-gut-shot.webp',
     info: {
       prepTime: { en: '5 mins', de: '5 Min.' },
       cookTime: { en: '0 mins', de: '0 Min.' },
@@ -88,7 +88,7 @@ export const recipes: Recipe[] = [
       en: 'A fresh and earthy gut shot packed with cucumber and spinach for hydration and vitamins, ginger for warmth, lemon for brightness, and milled chia seeds for prebiotic fibre.',
       de: 'Ein frischer Gut-Shot mit Gurke und Spinat für Hydratation und Vitamine, Ingwer für Wärme, Zitrone für Frische und gemahlene Chiasamen für präbiotische Ballaststoffe.',
     },
-    image: '/images/green-gut-shot.png',
+    image: '/images/green-gut-shot.webp',
     info: {
       prepTime: { en: '5 mins', de: '5 Min.' },
       cookTime: { en: '0 mins', de: '0 Min.' },
@@ -116,7 +116,7 @@ export const recipes: Recipe[] = [
       en: 'A probiotic-rich gut shot combining mixed berries for antioxidants with dairy kefir for live cultures, and milled chia seeds for prebiotic fibre — a complete gut health boost in one small glass.',
       de: 'Ein probiotisch-reicher Gut-Shot aus gemischten Beeren für Antioxidantien, Kefir für lebende Kulturen und gemahlene Chiasamen für präbiotische Ballaststoffe – ein vollständiger Darmgesundheits-Boost in einem kleinen Glas.',
     },
-    image: '/images/berry-kefir-gut-shot.jpg',
+    image: '/images/berry-kefir-gut-shot.webp',
     info: {
       prepTime: { en: '5 mins', de: '5 Min.' },
       cookTime: { en: '0 mins', de: '0 Min.' },
@@ -140,7 +140,7 @@ export const recipes: Recipe[] = [
       en: 'A deep red, detoxifying shot perfect for liver support, combining beets for nitrates, apples for pectin, and fresh ginger for digestive power.',
       de: 'Ein tiefroter, entgiftender Shot, der perfekt für die Leberunterstützung ist, und Beeren für Nitrate, Äpfel für Pektin und frischen Ingwer für die Verdauungsmacht kombiniert.',
     },
-    image: '/images/beet-apple-gut-shot.png',
+    image: '/images/beet-apple-gut-shot.webp',
     info: {
       prepTime: { en: '5 mins', de: '5 Min.' },
       cookTime: { en: '0 mins', de: '0 Min.' },
@@ -166,7 +166,7 @@ export const recipes: Recipe[] = [
       en: 'A deep purple, antioxidant-packed shot using wild blueberries for their exceptional anthocyanin density, raw apple cider vinegar to feed beneficial gut flora, lemon to enhance polyphenol absorption, and ginger for digestive warmth.',
       de: 'Ein tiefvioletter, antioxidantienreicher Shot mit wilden Blaubeeren für ihre außergewöhnliche Anthocyan-Dichte, rohem Apfelessig zur Ernährung nützlicher Darmbakterien, Zitrone für bessere Polyphenolaufnahme und Ingwer für verdauungsfördernde Wärme.',
     },
-    image: '/images/wild-blueberry-gut-shot.png',
+    image: '/images/wild-blueberry-gut-shot.webp',
     info: {
       prepTime: { en: '5 mins', de: '5 Min.' },
       cookTime: { en: '0 mins', de: '0 Min.' },
