@@ -134,7 +134,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
 
               return (
                 <li
-                  key={`${ingredient.name}-${index}`}
+                  key={`${ingredient.name.en}-${index}`}
                   className="flex items-start gap-4 group"
                 >
                   <div className="shrink-0 min-w-22">
@@ -177,9 +177,9 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                         title="Click to edit amount"
                       >
                         {formatAmount(scaledAmount)}
-                        {ingredient.unit && (
+                        {ingredient.unit[lang] && (
                           <span className="text-muted-foreground font-normal ml-1">
-                            {ingredient.unit}
+                            {ingredient.unit[lang]}
                           </span>
                         )}
                       </button>
@@ -187,10 +187,10 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                   </div>
 
                   <div className="flex-1 pt-2">
-                    <span className="text-base text-foreground">{ingredient.name}</span>
+                    <span className="text-base text-foreground">{ingredient.name[lang]}</span>
                     {ingredient.detail && (
                       <span className="text-base text-muted-foreground ml-2">
-                        ({ingredient.detail})
+                        ({ingredient.detail[lang]})
                       </span>
                     )}
                   </div>

@@ -2,9 +2,9 @@ export type LocalizedString = { en: string; de: string }
 
 export interface Ingredient {
   amount: number
-  unit: string
-  name: string
-  detail?: string
+  unit: LocalizedString
+  name: LocalizedString
+  detail?: LocalizedString
 }
 
 export interface RecipeInfo {
@@ -43,11 +43,11 @@ export const recipes: Recipe[] = [
       shelfLife: { en: '3 days', de: '3 Tage' },
     },
     ingredients: [
-      { amount: 100, unit: 'g', name: 'mango', detail: 'frozen' },
-      { amount: 5, unit: 'g', name: 'ginger', detail: 'roughly chopped' },
-      { amount: 1.5, unit: 'tbsp', name: 'flaxseed (linseed)', detail: 'ground' },
-      { amount: 0.3, unit: '', name: 'lime', detail: 'juiced' },
-      { amount: 100, unit: 'ml', name: 'water' },
+      { amount: 100, unit: { en: 'g', de: 'g' }, name: { en: 'mango', de: 'Mango' }, detail: { en: 'frozen', de: 'gefroren' } },
+      { amount: 5, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+      { amount: 1.5, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'flaxseed (linseed)', de: 'Leinsamen' }, detail: { en: 'ground', de: 'gemahlen' } },
+      { amount: 0.3, unit: { en: '', de: '' }, name: { en: 'lime', de: 'Limette' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+      { amount: 100, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
     ],
     baseServings: 2,
   },
@@ -69,12 +69,12 @@ export const recipes: Recipe[] = [
       shelfLife: { en: '3 days', de: '3 Tage' },
     },
     ingredients: [
-      { amount: 50, unit: 'g', name: 'carrot', detail: '' },
-      { amount: 1, unit: 'g', name: 'turmeric', detail: 'ground' },
-      { amount: 5, unit: 'g', name: 'ginger', detail: 'roughly chopped' },
-      { amount: 0.3, unit: '', name: 'lemon', detail: 'juiced' },
-      { amount: 0.125, unit: 'tsp', name: 'black pepper', detail: 'freshly ground' },
-      { amount: 100, unit: 'ml', name: 'water' },
+      { amount: 50, unit: { en: 'g', de: 'g' }, name: { en: 'carrot', de: 'Karotte' } },
+      { amount: 1, unit: { en: 'g', de: 'g' }, name: { en: 'turmeric', de: 'Kurkuma' }, detail: { en: 'ground', de: 'gemahlen' } },
+      { amount: 5, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+      { amount: 0.3, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+      { amount: 0.125, unit: { en: 'tsp', de: 'TL' }, name: { en: 'black pepper', de: 'schwarzer Pfeffer' }, detail: { en: 'freshly ground', de: 'frisch gemahlen' } },
+      { amount: 100, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
     ],
     baseServings: 2,
   },
@@ -96,13 +96,13 @@ export const recipes: Recipe[] = [
       shelfLife: { en: '2 days', de: '2 Tage' },
     },
     ingredients: [
-      { amount: 50, unit: 'g', name: 'cucumber', detail: 'roughly chopped' },
-      { amount: 25, unit: 'g', name: 'spinach' },
-      { amount: 5, unit: 'g', name: 'ginger', detail: 'roughly chopped' },
-      { amount: 0.3, unit: '', name: 'lemon', detail: 'juiced' },
-      { amount: 1, unit: 'tsp', name: 'maple syrup' },
-      { amount: 1, unit: 'tbsp', name: 'chia seeds', detail: 'milled' },
-      { amount: 50, unit: 'ml', name: 'water' },
+      { amount: 50, unit: { en: 'g', de: 'g' }, name: { en: 'cucumber', de: 'Gurke' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+      { amount: 25, unit: { en: 'g', de: 'g' }, name: { en: 'spinach', de: 'Spinat' } },
+      { amount: 5, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+      { amount: 0.3, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+      { amount: 1, unit: { en: 'tsp', de: 'TL' }, name: { en: 'maple syrup', de: 'Ahornsirup' } },
+      { amount: 1, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'chia seeds', de: 'Chiasamen' }, detail: { en: 'milled', de: 'gemahlen' } },
+      { amount: 50, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
     ],
     baseServings: 2,
   },
@@ -124,9 +124,9 @@ export const recipes: Recipe[] = [
       shelfLife: { en: '2 days', de: '2 Tage' },
     },
     ingredients: [
-      { amount: 67, unit: 'g', name: 'mixed berries', detail: 'frozen' },
-      { amount: 100, unit: 'ml', name: 'kefir', detail: 'dairy' },
-      { amount: 1.25, unit: 'tbsp', name: 'chia seeds', detail: 'milled' },
+      { amount: 67, unit: { en: 'g', de: 'g' }, name: { en: 'mixed berries', de: 'gemischte Beeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+      { amount: 100, unit: { en: 'ml', de: 'ml' }, name: { en: 'kefir', de: 'Kefir' }, detail: { en: 'dairy', de: 'aus Milch' } },
+      { amount: 1.25, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'chia seeds', de: 'Chiasamen' }, detail: { en: 'milled', de: 'gemahlen' } },
     ],
     baseServings: 2,
   },
@@ -148,11 +148,11 @@ export const recipes: Recipe[] = [
       shelfLife: { en: '3 days', de: '3 Tage' },
     },
     ingredients: [
-      { amount: 50, unit: 'g', name: 'beetroot', detail: 'peeled, chopped' },
-      { amount: 50, unit: 'g', name: 'apple', detail: 'cored' },
-      { amount: 3, unit: 'g', name: 'ginger', detail: 'roughly chopped' },
-      { amount: 0.3, unit: '', name: 'lemon', detail: 'juiced' },
-      { amount: 100, unit: 'ml', name: 'water' },
+      { amount: 50, unit: { en: 'g', de: 'g' }, name: { en: 'beetroot', de: 'Rote Bete' }, detail: { en: 'peeled, chopped', de: 'geschält, gehackt' } },
+      { amount: 50, unit: { en: 'g', de: 'g' }, name: { en: 'apple', de: 'Apfel' }, detail: { en: 'cored', de: 'entkernt' } },
+      { amount: 3, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+      { amount: 0.3, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+      { amount: 100, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
     ],
     baseServings: 2,
   },
@@ -174,13 +174,13 @@ export const recipes: Recipe[] = [
       shelfLife: { en: '2 days', de: '2 Tage' },
     },
     ingredients: [
-      { amount: 100, unit: 'g', name: 'wild blueberries', detail: 'frozen' },
-      { amount: 5, unit: 'g', name: 'ginger', detail: 'roughly chopped' },
-      { amount: 15, unit: 'ml', name: 'apple cider vinegar', detail: 'raw, with mother' },
-      { amount: 0.5, unit: '', name: 'lemon', detail: 'juiced' },
-      { amount: 1, unit: 'tsp', name: 'raw honey' },
-      { amount: 1.5, unit: 'tbsp', name: 'flaxseed (linseed)', detail: 'ground' },
-      { amount: 75, unit: 'ml', name: 'water' },
+      { amount: 100, unit: { en: 'g', de: 'g' }, name: { en: 'wild blueberries', de: 'wilde Blaubeeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+      { amount: 5, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+      { amount: 15, unit: { en: 'ml', de: 'ml' }, name: { en: 'apple cider vinegar', de: 'Apfelessig' }, detail: { en: 'raw, with mother', de: 'roh, mit Essigmutter' } },
+      { amount: 0.5, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+      { amount: 1, unit: { en: 'tsp', de: 'TL' }, name: { en: 'raw honey', de: 'roher Honig' } },
+      { amount: 1.5, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'flaxseed (linseed)', de: 'Leinsamen' }, detail: { en: 'ground', de: 'gemahlen' } },
+      { amount: 75, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
     ],
     baseServings: 2,
   },
