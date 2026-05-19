@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Clock, Flame, Snowflake, Calendar, Minus, Plus } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
+import { Clock, Flame, Snowflake, Calendar, Minus, Plus, ChevronLeft, ChevronRight, Info } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { Recipe, RecipeInfo } from '@/lib/recipes'
 import { cn } from '@/lib/utils'
@@ -21,10 +21,50 @@ const INFO_CONFIG: ReadonlyArray<{ key: keyof RecipeInfo; icon: LucideIcon }> = 
 
 export function RecipeDetail({ recipe }: RecipeDetailProps) {
   const { t, lang } = useLang()
-  const [servings, setServings] = useState(recipe.baseServings)
-  const [editingIngredient, setEditingIngredient] = useState<number | null>(null)
 
-  const scaleFactor = servings / recipe.baseServings
+  const hasVariations = !!(recipe.variations && recipe.variations.length > 0)
+  const [selectedVariationIndex, setSelectedVariationIndex] = useState(0)
+  const [servings, setServings] = useState(
+    recipe.variations?.[0]?.baseServings ?? recipe.baseServings
+  )
+  const [editingIngredient, setEditingIngredient] = useState<number | null>(null)
+  const variationScrollRef = useRef<HTMLDivElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(hasVariations)
+
+  useEffect(() => {
+    const el = variationScrollRef.current
+    if (!el) return
+    const check = () => {
+      setCanScrollLeft(el.scrollLeft > 4)
+      setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4)
+    }
+    check()
+    el.addEventListener('scroll', check, { passive: true })
+    const ro = new ResizeObserver(check)
+    ro.observe(el)
+    return () => {
+      el.removeEventListener('scroll', check)
+      ro.disconnect()
+    }
+  }, [hasVariations])
+
+  const scrollVariations = (dir: 'left' | 'right') => {
+    const el = variationScrollRef.current
+    if (!el) return
+    el.scrollBy({ left: dir === 'right' ? el.clientWidth : -el.clientWidth, behavior: 'smooth' })
+  }
+
+  const activeVariation = hasVariations ? recipe.variations![selectedVariationIndex] : null
+  const activeIngredients = activeVariation ? activeVariation.ingredients : recipe.ingredients
+  const activeBaseServings = activeVariation ? activeVariation.baseServings : recipe.baseServings
+  const scaleFactor = servings / activeBaseServings
+
+  const handleVariationChange = (index: number) => {
+    setSelectedVariationIndex(index)
+    setServings(recipe.variations![index].baseServings)
+    setEditingIngredient(null)
+  }
 
   const handleServingsChange = (delta: number) => {
     const next = delta > 0
@@ -35,8 +75,8 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
 
   const handleIngredientAmountChange = (index: number, newAmount: number) => {
     if (newAmount <= 0) return
-    const ingredientScaleFactor = newAmount / recipe.ingredients[index].amount
-    setServings(recipe.baseServings * ingredientScaleFactor)
+    const ingredientScaleFactor = newAmount / activeIngredients[index].amount
+    setServings(activeBaseServings * ingredientScaleFactor)
     setEditingIngredient(null)
   }
 
@@ -100,6 +140,57 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
             {t.recipe.ingredients}
           </h2>
 
+          {/* Variation Selector */}
+          {hasVariations && (
+            <div className="flex items-center gap-2 mb-6">
+              <button
+                onClick={() => scrollVariations('left')}
+                disabled={!canScrollLeft}
+                className={cn(
+                  'w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0 transition-all',
+                  canScrollLeft
+                    ? 'text-foreground hover:bg-accent cursor-pointer'
+                    : 'opacity-0 pointer-events-none',
+                )}
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <div
+                ref={variationScrollRef}
+                className="flex-1 flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden scrollbar-none"
+              >
+                {recipe.variations!.map((v, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleVariationChange(i)}
+                    className={cn(
+                      'px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors shrink-0',
+                      selectedVariationIndex === i
+                        ? 'bg-foreground text-background'
+                        : 'bg-secondary text-muted-foreground hover:text-foreground hover:bg-accent',
+                    )}
+                  >
+                    {v.title[lang]}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={() => scrollVariations('right')}
+                disabled={!canScrollRight}
+                className={cn(
+                  'w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0 transition-all',
+                  canScrollRight
+                    ? 'text-foreground hover:bg-accent cursor-pointer'
+                    : 'opacity-0 pointer-events-none',
+                )}
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+
           {/* Servings Control */}
           <div className="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
             <span className="text-base font-medium text-foreground">
@@ -128,7 +219,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
 
           {/* Ingredients List */}
           <ul>
-            {recipe.ingredients.map((ingredient, index) => {
+            {activeIngredients.map((ingredient, index) => {
               const scaledAmount = ingredient.amount * scaleFactor
               const isEditing = editingIngredient === index
 
@@ -198,6 +289,16 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
               )
             })}
           </ul>
+
+          {/* Variation Note */}
+          {activeVariation?.note && (
+            <div className="mt-6 flex gap-3 bg-secondary/50 rounded-2xl px-4 py-3">
+              <Info className="w-4 h-4 shrink-0 mt-0.5 text-muted-foreground" />
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {activeVariation.note[lang]}
+              </p>
+            </div>
+          )}
 
           {/* Hint */}
           <p className="text-sm text-muted-foreground mt-8 pt-6 border-t border-border/50 text-center">

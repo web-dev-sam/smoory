@@ -14,6 +14,13 @@ export interface RecipeInfo {
   shelfLife: LocalizedString
 }
 
+export interface RecipeVariation {
+  title: LocalizedString
+  ingredients: Ingredient[]
+  note?: LocalizedString
+  baseServings: number
+}
+
 export interface Recipe {
   id: string
   title: LocalizedString
@@ -22,6 +29,7 @@ export interface Recipe {
   info: RecipeInfo
   ingredients: Ingredient[]
   baseServings: number
+  variations?: RecipeVariation[]
 }
 
 export const recipes: Recipe[] = [
@@ -183,6 +191,104 @@ export const recipes: Recipe[] = [
       { amount: 130, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
     ],
     baseServings: 2,
+    variations: [
+      {
+        title: { en: 'Flaxseed + Coconut Milk', de: 'Leinsamen + Kokosmilch' },
+        baseServings: 2,
+        ingredients: [
+          { amount: 300, unit: { en: 'g', de: 'g' }, name: { en: 'wild blueberries', de: 'wilde Blaubeeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+          { amount: 15, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+          { amount: 18, unit: { en: 'ml', de: 'ml' }, name: { en: 'apple cider vinegar', de: 'Apfelessig' }, detail: { en: 'raw, with mother', de: 'roh, mit Essigmutter' } },
+          { amount: 0.5, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+          { amount: 4, unit: { en: 'tsp', de: 'TL' }, name: { en: 'raw honey', de: 'roher Honig' } },
+          { amount: 2, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'flaxseed', de: 'Leinsamen' }, detail: { en: 'whole', de: 'ganz' } },
+          { amount: 200, unit: { en: 'ml', de: 'ml' }, name: { en: 'coconut milk', de: 'Kokosmilch' }, detail: { en: 'full fat', de: 'Vollfett' } },
+          { amount: 200, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
+        ],
+      },
+      {
+        title: { en: 'Flaxseed + Oat Milk', de: 'Leinsamen + Hafermilch' },
+        baseServings: 2,
+        note: {
+          en: 'Buy unsweetened or it\'ll clash with the honey; also adds a slight oaty flavour to be aware of.',
+          de: 'Ungesüßt kaufen, sonst überlagert es den Honig; hat auch einen leichten Hafergeschmack.',
+        },
+        ingredients: [
+          { amount: 300, unit: { en: 'g', de: 'g' }, name: { en: 'wild blueberries', de: 'wilde Blaubeeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+          { amount: 15, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+          { amount: 18, unit: { en: 'ml', de: 'ml' }, name: { en: 'apple cider vinegar', de: 'Apfelessig' }, detail: { en: 'raw, with mother', de: 'roh, mit Essigmutter' } },
+          { amount: 0.5, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+          { amount: 4, unit: { en: 'tsp', de: 'TL' }, name: { en: 'raw honey', de: 'roher Honig' } },
+          { amount: 2, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'flaxseed', de: 'Leinsamen' }, detail: { en: 'whole', de: 'ganz' } },
+          { amount: 400, unit: { en: 'ml', de: 'ml' }, name: { en: 'oat milk', de: 'Hafermilch' }, detail: { en: 'unsweetened', de: 'ungesüßt' } },
+        ],
+      },
+      {
+        title: { en: 'Flaxseed + Cashews', de: 'Leinsamen + Cashews' },
+        baseServings: 2,
+        note: {
+          en: 'Soaking softens them so the blender can fully emulsify, but not strictly necessary at high speed.',
+          de: 'Einweichen macht sie weicher für bessere Emulgierung, aber bei hoher Drehzahl nicht unbedingt nötig.',
+        },
+        ingredients: [
+          { amount: 300, unit: { en: 'g', de: 'g' }, name: { en: 'wild blueberries', de: 'wilde Blaubeeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+          { amount: 15, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+          { amount: 18, unit: { en: 'ml', de: 'ml' }, name: { en: 'apple cider vinegar', de: 'Apfelessig' }, detail: { en: 'raw, with mother', de: 'roh, mit Essigmutter' } },
+          { amount: 0.5, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+          { amount: 4, unit: { en: 'tsp', de: 'TL' }, name: { en: 'raw honey', de: 'roher Honig' } },
+          { amount: 2, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'flaxseed', de: 'Leinsamen' }, detail: { en: 'whole', de: 'ganz' } },
+          { amount: 35, unit: { en: 'g', de: 'g' }, name: { en: 'cashews', de: 'Cashews' }, detail: { en: 'raw, soaked 30 min ideally', de: 'roh, idealerweise 30 Min. eingeweicht' } },
+          { amount: 400, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
+        ],
+      },
+      {
+        title: { en: 'Chia Seeds + Water', de: 'Chiasamen + Wasser' },
+        baseServings: 2,
+        note: {
+          en: 'Stir in after blending and drink within 5 minutes before it gels into a pudding texture.',
+          de: 'Nach dem Mixen einrühren und innerhalb von 5 Minuten trinken, bevor es zu einem Pudding geliert.',
+        },
+        ingredients: [
+          { amount: 300, unit: { en: 'g', de: 'g' }, name: { en: 'wild blueberries', de: 'wilde Blaubeeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+          { amount: 15, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+          { amount: 18, unit: { en: 'ml', de: 'ml' }, name: { en: 'apple cider vinegar', de: 'Apfelessig' }, detail: { en: 'raw, with mother', de: 'roh, mit Essigmutter' } },
+          { amount: 0.5, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+          { amount: 4, unit: { en: 'tsp', de: 'TL' }, name: { en: 'raw honey', de: 'roher Honig' } },
+          { amount: 1.5, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'chia seeds', de: 'Chiasamen' }, detail: { en: 'added after blending', de: 'nach dem Mixen hinzufügen' } },
+          { amount: 400, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
+        ],
+      },
+      {
+        title: { en: 'Hemp Seeds + Water', de: 'Hanfsamen + Wasser' },
+        baseServings: 2,
+        ingredients: [
+          { amount: 300, unit: { en: 'g', de: 'g' }, name: { en: 'wild blueberries', de: 'wilde Blaubeeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+          { amount: 15, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+          { amount: 18, unit: { en: 'ml', de: 'ml' }, name: { en: 'apple cider vinegar', de: 'Apfelessig' }, detail: { en: 'raw, with mother', de: 'roh, mit Essigmutter' } },
+          { amount: 0.5, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+          { amount: 4, unit: { en: 'tsp', de: 'TL' }, name: { en: 'raw honey', de: 'roher Honig' } },
+          { amount: 3, unit: { en: 'tbsp', de: 'EL' }, name: { en: 'hemp seeds', de: 'Hanfsamen' } },
+          { amount: 400, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
+        ],
+      },
+      {
+        title: { en: 'Banana + Water', de: 'Banane + Wasser' },
+        baseServings: 2,
+        note: {
+          en: 'Frozen banana makes it noticeably thicker and creamier, almost ice cream-like.',
+          de: 'Gefrorene Banane macht ihn deutlich dicker und cremiger, fast wie Eis.',
+        },
+        ingredients: [
+          { amount: 300, unit: { en: 'g', de: 'g' }, name: { en: 'wild blueberries', de: 'wilde Blaubeeren' }, detail: { en: 'frozen', de: 'gefroren' } },
+          { amount: 15, unit: { en: 'g', de: 'g' }, name: { en: 'ginger', de: 'Ingwer' }, detail: { en: 'roughly chopped', de: 'grob gehackt' } },
+          { amount: 18, unit: { en: 'ml', de: 'ml' }, name: { en: 'apple cider vinegar', de: 'Apfelessig' }, detail: { en: 'raw, with mother', de: 'roh, mit Essigmutter' } },
+          { amount: 0.5, unit: { en: '', de: '' }, name: { en: 'lemon', de: 'Zitrone' }, detail: { en: 'juiced', de: 'ausgepresst' } },
+          { amount: 3, unit: { en: 'tsp', de: 'TL' }, name: { en: 'raw honey', de: 'roher Honig' }, detail: { en: 'reduced – banana adds sweetness', de: 'reduziert – Banane gibt Süße' } },
+          { amount: 1, unit: { en: '', de: '' }, name: { en: 'banana', de: 'Banane' }, detail: { en: 'medium, ripe – frozen works great', de: 'mittelgroß, reif – gefroren empfohlen' } },
+          { amount: 400, unit: { en: 'ml', de: 'ml' }, name: { en: 'water', de: 'Wasser' } },
+        ],
+      },
+    ],
   },
 ];
 
